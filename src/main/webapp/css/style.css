@@ -1,0 +1,211 @@
+  body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      margin: 0;
+      padding: 0;
+  }
+
+  .navbar-custom {
+      background: linear-gradient(to right, #5A9BD4, #87CEEB); /* Gradient từ xanh dương đậm hơn sang xanh dương nhạt */
+      padding: 0.8rem 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+  }
+
+  .navbar-custom .navbar-brand {
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #fff; /* Chữ trắng trên nền đậm để dễ nhìn */
+  }
+
+  .logo-img {
+      margin-right: 0.3rem;
+  }
+
+  .brand-text {
+      color: #fff;
+  }
+
+  .navbar-custom .navbar-nav {
+      margin: 0 auto;
+  }
+
+  .navbar-custom .nav-link {
+      color: #fff;
+      font-weight: 500;
+      margin: 0 0.8rem;
+      transition: color 0.3s ease;
+  }
+
+  .navbar-custom .nav-link:hover {
+      color: #FFD700;
+  }
+
+  .navbar-custom .navbar-nav.align-items-center {
+      height: 100%;
+      display: flex;
+      align-items: center;
+  }
+
+  .search-input {
+      border-radius: 12px 0 0 12px;
+      border: 1px solid #ccc;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.85rem;
+      width: 140px;
+      height: 32px;
+      line-height: 32px;
+      background-color: #fff;
+  }
+
+  .search-btn {
+      border-radius: 0 12px 12px 0;
+      padding: 0.3rem 0.6rem;
+      background-color: #fff; /* Nền trắng để dễ nhìn trên header đậm */
+      border: 1px solid #5A9BD4;
+      height: 32px;
+      line-height: 32px;
+      color: #5A9BD4;
+      transition: background-color 0.3s ease;
+  }
+
+  .search-btn:hover {
+      background-color: #5A9BD4;
+      color: #fff;
+  }
+
+  .cart-count {
+      background-color: #FFD700;
+      color: #fff;
+      border-radius: 50%;
+      padding: 0 0.2rem;
+      font-size: 0.7rem;
+      margin-left: 0.2rem;
+  }
+
+  .carousel-item img {
+      max-height: 600px;
+      object-fit: cover;
+      filter: brightness(90%);
+  }
+
+  .carousel-caption {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 15px;
+      border-radius: 10px;
+  }
+
+  .carousel-caption h5 {
+      color: #FFD700;
+      font-size: 2rem;
+  }
+
+  .carousel-caption p {
+      color: #fff;
+      font-size: 1rem;
+  }
+
+  .product-card {
+      border: none;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 15px;
+  }
+
+  .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(90, 155, 212, 0.1); /* Sử dụng màu đậm hơn cho shadow */
+  }
+
+  .product-card img {
+      height: 200px;
+      object-fit: cover;
+  }
+
+  .card-title {
+      font-size: 1.1rem;
+      color: #5A9BD4; /* Màu đậm hơn cho tiêu đề sản phẩm */
+  }
+
+  .btn-primary {
+      background-color: #5A9BD4;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      transition: background-color 0.3s ease;
+  }
+
+  .btn-primary:hover {
+      background-color: #3A7BB4; /* Đậm hơn khi hover */
+  }
+
+  .btn-secondary {
+      background-color: #6c757d;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      transition: background-color 0.3s ease;
+  }
+
+  .btn-secondary:hover {
+      background-color: #5a6268;
+  }
+
+  .welcome-section {
+      background: linear-gradient(135deg, #5A9BD4, #87CEEB);
+      color: #fff;
+      padding: 40px 0;
+      border-radius: 10px;
+      margin-top: 15px;
+  }
+
+  .footer {
+      background: linear-gradient(to right, #5A9BD4, #87CEEB); /* Gradient xanh dương đậm hơn đồng nhất */
+      color: #fff;
+      padding: 1.5rem 0;
+      margin-top: 30px;
+  }
+
+  .footer h5 {
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+      color: #fff;
+  }
+
+  .footer ul {
+      list-style: none;
+      padding: 0;
+  }
+
+  .footer ul li {
+      margin-bottom: 0.4rem;
+  }
+
+  .footer ul li a {
+      color: #FFD700;
+      text-decoration: none;
+      transition: color 0.3s ease;
+  }
+
+  .footer ul li a:hover {
+      color: #fff;
+  }
+
+  .social-icons a {
+      color: #fff;
+      margin-right: 0.8rem;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+  }
+
+  .social-icons a:hover {
+      color: #FFD700;
+  }
+ 
