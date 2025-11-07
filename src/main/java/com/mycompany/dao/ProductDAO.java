@@ -28,13 +28,22 @@ public class ProductDAO {
             sql += " WHERE brand = ?";
             hasWhere = true;
         }
-        if (sort != null) {
-            sql += hasWhere ? " AND " : " WHERE ";
-            if ("lowToHigh".equals(sort)) {
-                sql += " ORDER BY price ASC";
-            } else if ("highToLow".equals(sort)) {
-                sql += " ORDER BY price DESC";
+//        if (sort != null) {
+//            sql += hasWhere ? " AND " : " WHERE ";
+//            if ("lowToHigh".equals(sort)) {
+//                sql += " ORDER BY price ASC";
+//            } else if ("highToLow".equals(sort)) {
+//                sql += " ORDER BY price DESC";
+//            }
+//        }
+        if (sort != null && !sort.isEmpty()) {
+            String orderBy = "";
+            if ("price_asc".equals(sort)) {
+                orderBy = " ORDER BY price ASC";
+            } else if ("price_desc".equals(sort)) {
+                orderBy = " ORDER BY price DESC";
             }
+            sql += orderBy;
         }
         try {
             Class.forName("org.postgresql.Driver");
