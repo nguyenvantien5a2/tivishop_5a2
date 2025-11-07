@@ -90,18 +90,22 @@
                 <div class="carousel-item active">
                     <div class="banner-container">
                          <a href="${pageContext.request.contextPath}/product-detail?id=3">
-                        <img src="${pageContext.request.contextPath}/images/banner1.jpg" class="d-block w-100" alt="Banner 1">
+                        <img src="${pageContext.request.contextPath}/images/banner1.jpg" class="d-block w-100" alt="sony3">
                          </a>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="banner-container">
-                        <img src="${pageContext.request.contextPath}/images/banner2.jpg" class="d-block w-100" alt="Banner 2">
+                        <a href="${pageContext.request.contextPath}/product-detail?id=1">
+                        <img src="${pageContext.request.contextPath}/images/banner2.jpg" class="d-block w-100" alt="samsung1">
+                        </a>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="banner-container">
-                        <img src="${pageContext.request.contextPath}/images/banner3.jpg" class="d-block w-100" alt="Banner 3">
+                        <a href="${pageContext.request.contextPath}/product-detail?id=2">
+                        <img src="${pageContext.request.contextPath}/images/banner3.jpg" class="d-block w-100" alt="sony2">
+                        </a>
                     </div>
                 </div>
             </div>

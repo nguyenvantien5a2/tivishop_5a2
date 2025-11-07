@@ -39,8 +39,15 @@ public class RegisterServlet extends HttpServlet {
         user.setFullName(fullName);
         user.setRole(role != null ? role : "USER");
 
+//        if (userDAO.addUser(user)) {
+//            resp.sendRedirect("login");
+//        } else {
+//            req.setAttribute("error", "Đăng ký thất bại! Vui lòng thử lại.");
+//            req.getRequestDispatcher("/register.jsp").forward(req, resp);
+//        }
         if (userDAO.addUser(user)) {
-            resp.sendRedirect("login");
+            req.setAttribute("success", "Đăng ký thành công! Vui lòng đăng nhập.");
+            req.getRequestDispatcher("/login.jsp").forward(req, resp);
         } else {
             req.setAttribute("error", "Đăng ký thất bại! Vui lòng thử lại.");
             req.getRequestDispatcher("/register.jsp").forward(req, resp);

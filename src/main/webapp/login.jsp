@@ -21,8 +21,8 @@
             padding: 40px;
             border-radius: 15px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            width: 400px;
-            margin: 50px auto; /* Add margin to prevent sticking */
+            width: 450px;
+            margin: 60px auto; /* Add margin to prevent sticking */
             flex: 0 0 auto;
         }
         .login-title {
@@ -72,6 +72,11 @@
     <main>
         <div class="login-container">
             <h2 class="login-title">Đăng Nhập</h2>
+            <c:if test="${not empty success}">
+                <div class="alert alert-success text-center" role="alert">
+                    ${success}
+                </div>
+            </c:if>
             <form action="login" method="post">
                 <div class="mb-3">
                     <label for="username" class="form-label">Tên Đăng Nhập</label>

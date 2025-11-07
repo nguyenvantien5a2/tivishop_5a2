@@ -89,13 +89,15 @@
                     <label for="fullName" class="form-label">Họ và Tên</label>
                     <input type="text" class="form-control" id="fullName" name="fullName" required>
                 </div>
-                <div class="mb-3">
+<!--                <div class="mb-3">
                     <label for="role" class="form-label">Quyền Hạn</label>
                     <select class="form-select" id="role" name="role">
                         <option value="USER">Người Dùng</option>
-<!--                        <option value="ADMIN">Quản Trị Viên</option>-->
+                        <option value="ADMIN">Quản Trị Viên</option>
                     </select>
-                </div>
+                </div>-->
+                <input type="hidden" name="role" value="USER">
+                
                 <button type="submit" class="btn btn-register">Đăng Ký</button>
                 <c:if test="${not empty error}">
                     <p class="error">${error}</p>
