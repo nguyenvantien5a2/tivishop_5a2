@@ -66,6 +66,14 @@
         .login-link a:hover {
             text-decoration: underline;
         }
+        .is-valid {
+            border-color: #28a745 !important;
+            box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+        }
+        .is-invalid {
+            border-color: #dc3545 !important;
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+        }
     </style>
 </head>
 <body>
@@ -75,27 +83,22 @@
             <form action="register" method="post">
                 <div class="mb-3">
                     <label for="username" class="form-label">Tên Đăng Nhập</label>
-                    <input type="text" class="form-control" id="username" name="username" required>
+                    <input type="text" class="form-control" id="username" name="username" value="${username}" required>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Mật Khẩu</label>
                     <input type="password" class="form-control" id="password" name="password" required>
+                    <div id="password-error" class="text-danger small mt-1"></div>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
+                    <input type="email" class="form-control" id="email" name="email" value="${email}" required>
                 </div>
                 <div class="mb-3">
                     <label for="fullName" class="form-label">Họ và Tên</label>
-                    <input type="text" class="form-control" id="fullName" name="fullName" required>
+                    <input type="text" class="form-control" id="fullName" name="fullName" value="${fullName}" required>
                 </div>
-<!--                <div class="mb-3">
-                    <label for="role" class="form-label">Quyền Hạn</label>
-                    <select class="form-select" id="role" name="role">
-                        <option value="USER">Người Dùng</option>
-                        <option value="ADMIN">Quản Trị Viên</option>
-                    </select>
-                </div>-->
+
                 <input type="hidden" name="role" value="USER">
                 
                 <button type="submit" class="btn btn-register">Đăng Ký</button>
@@ -110,5 +113,43 @@
     </main>
     <%@include file="footer.jsp"%>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const passwordInput = document.getElementById("password");
+            const passwordError = document.getElementById("password-error");
+            const form = document.querySelector("form");
+
+            // Danh sách ký tự đặc biệt
+            const specialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+
+            passwordInput.addEventListener("input", function () {
+                const value = passwordInput.value;
+
+                if (value.length < 8) {
+                    passwordError.textContent = "Mật khẩu phải có ít nhất 8 ký tự.";
+                    passwordInput.classList.add("is-invalid");
+                    passwordInput.classList.remove("is-valid");
+                } else if (!specialChars.test(value)) {
+                    passwordError.textContent = "Mật khẩu phải chứa ít nhất 1 ký tự đặc biệt.";
+                    passwordInput.classList.add("is-invalid");
+                    passwordInput.classList.remove("is-valid");
+                } else {
+                    passwordError.textContent = "";
+                    passwordInput.classList.remove("is-invalid");
+                    passwordInput.classList.add("is-valid");
+                }
+            });
+
+            // Ngăn submit nếu mật khẩu không hợp lệ
+            form.addEventListener("submit", function (e) {
+                const value = passwordInput.value;
+                if (value.length < 8 || !specialChars.test(value)) {
+                    e.preventDefault();
+                    passwordError.textContent = "Vui lòng nhập mật khẩu hợp lệ!";
+                    passwordInput.classList.add("is-invalid");
+                }
+            });
+        });
+    </script>
 </body>
 </html>

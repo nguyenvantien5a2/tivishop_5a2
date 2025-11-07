@@ -20,37 +20,55 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");
-        String password = req.getParameter("password"); // In production, hash this
+        String password = req.getParameter("password");
         String email = req.getParameter("email");
         String fullName = req.getParameter("fullName");
-        String role = req.getParameter("role");
+
+        // === VALIDATION MẬT KHẨU ===
+        String passwordError = validatePassword(password);
+        if (passwordError != null) {
+            req.setAttribute("error", passwordError);
+            req.setAttribute("username", username);
+            req.setAttribute("email", email);
+            req.setAttribute("fullName", fullName);
+            req.getRequestDispatcher("/register.jsp").forward(req, resp);
+            return;
+        }
 
         UserDAO userDAO = new UserDAO();
         if (userDAO.isUsernameOrEmailExists(username, email)) {
             req.setAttribute("error", "Tên đăng nhập hoặc email đã tồn tại!");
+            req.setAttribute("username", username);
+            req.setAttribute("email", email);
+            req.setAttribute("fullName", fullName);
             req.getRequestDispatcher("/register.jsp").forward(req, resp);
             return;
         }
 
         User user = new User();
         user.setUsername(username);
-        user.setPassword(password); // Hash password in production
+        user.setPassword(password);
         user.setEmail(email);
         user.setFullName(fullName);
-        user.setRole(role != null ? role : "USER");
+        user.setRole("USER");
 
-//        if (userDAO.addUser(user)) {
-//            resp.sendRedirect("login");
-//        } else {
-//            req.setAttribute("error", "Đăng ký thất bại! Vui lòng thử lại.");
-//            req.getRequestDispatcher("/register.jsp").forward(req, resp);
-//        }
         if (userDAO.addUser(user)) {
-            req.setAttribute("success", "Đăng ký thành công! Vui lòng đăng nhập.");
+            req.setAttribute("success", "Bạn đã đăng ký thành công! Vui lòng đăng nhập.");
             req.getRequestDispatcher("/login.jsp").forward(req, resp);
         } else {
             req.setAttribute("error", "Đăng ký thất bại! Vui lòng thử lại.");
             req.getRequestDispatcher("/register.jsp").forward(req, resp);
         }
+    }
+
+    // === Hàm kiểm tra mật khẩu ===
+    private String validatePassword(String password) {
+        if (password == null || password.length() < 8) {
+            return "Mật khẩu phải có ít nhất 8 ký tự.";
+        }
+        if (!password.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>/?].*")) {
+            return "Mật khẩu phải chứa ít nhất 1 ký tự đặc biệt.";
+        }
+        return null; // hợp lệ
     }
 }
