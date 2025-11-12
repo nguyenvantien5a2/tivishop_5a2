@@ -82,6 +82,7 @@ Mục tiêu chính:
 
 ### 4. Đóng gói và triển khai Docker
 - Tạo file Dockerfile trong thư mục gốc dự án:
+```sql
 FROM tomcat:10.1
 COPY target/TiviShop.war /usr/local/tomcat/webapps/
 EXPOSE 8080
