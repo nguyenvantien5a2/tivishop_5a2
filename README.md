@@ -85,8 +85,14 @@ Mục tiêu chính:
 ### 4. Đóng gói và triển khai Docker
 - Tạo file Dockerfile trong thư mục gốc dự án:
 ```sql
-FROM tomcat:10.1
-COPY target/TiviShop.war /usr/local/tomcat/webapps/
+FROM maven:3.8-openjdk-17 AS build
+WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
+
+FROM tomcat:10.1-jdk17
+COPY --from=build /app/target/TiviShop.war /usr/local/tomcat/webapps/ROOT.war
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
 ```
