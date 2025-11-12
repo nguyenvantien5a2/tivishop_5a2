@@ -79,3 +79,10 @@ Mục tiêu chính:
 - Tạo database `tivishop` trong PostgreSQL:
   ```sql
   CREATE DATABASE tivishop;
+
+### 4. Đóng gói và triển khai Docker
+- Tạo file Dockerfile trong thư mục gốc dự án:
+FROM tomcat:10.1
+COPY target/TiviShop.war /usr/local/tomcat/webapps/
+EXPOSE 8080
+CMD ["catalina.sh", "run"]
