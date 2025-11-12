@@ -1,4 +1,4 @@
-# 🖥️ Ứng dung ngôn ngữ Java xây dựng website bán tivi theo mô hình MVC
+# Ứng dung ngôn ngữ Java xây dựng website bán tivi theo mô hình MVC
 
 ## Giới thiệu
 Đề tài xây dựng **website bán tivi trực tuyến** bằng ngôn ngữ **Java**, áp dụng mô hình **MVC (Model – View – Controller)** nhằm tổ chức mã nguồn rõ ràng, tách biệt giữa giao diện, xử lý và dữ liệu.
@@ -28,9 +28,9 @@ Mục tiêu chính:
 
 ---
 
-## 🛒 Chức năng hệ thống
+## Chức năng hệ thống
 
-### 👤 Người dùng (User)
+### Người dùng (User)
 - Đăng ký, đăng nhập, đăng xuất tài khoản.
 - Xem danh sách sản phẩm, lọc theo thương hiệu (Sony, Samsung, LG...) và khoảng giá.
 - Thêm sản phẩm vào giỏ hàng, cập nhật số lượng, xóa sản phẩm trong giỏ.
@@ -42,7 +42,7 @@ Mục tiêu chính:
 - Quản lý tài khoản cá nhân (đổi mật khẩu, cập nhật thông tin).
 - Đánh giá sản phẩm sau khi mua.
 
-### 🧑‍💼 Quản trị viên (Admin)
+### Quản trị viên (Admin)
 - Đăng nhập tài khoản quản trị.
 - **Dashboard:** hiển thị số lượng sản phẩm, đơn hàng, doanh thu tổng.
 - **Quản lý sản phẩm:** thêm, sửa, xóa, xem chi tiết sản phẩm.
@@ -51,7 +51,7 @@ Mục tiêu chính:
 
 ---
 
-## 💻 Công nghệ sử dụng
+## Công nghệ sử dụng
 
 | Thành phần | Công nghệ |
 |-------------|------------|
@@ -68,7 +68,7 @@ Mục tiêu chính:
 
 ---
 
-## 🚀 Triển khai & Cài đặt
+## Triển khai & Cài đặt
 
 ### 1. Chuẩn bị môi trường
 - Cài đặt **JDK (Java Development Kit)**, **Apache Tomcat**, **PostgreSQL** và **pgAdmin**.  
@@ -98,5 +98,5 @@ CMD ["catalina.sh", "run"]
     - tạo Servers (nhập hostname, port, database, username, pass…)
     - tạo query tool (chạy câu lệnh sql)
 - Triển khai thành công web lên Render.
-Web chạy ổn định tại: https://tivishop2.onrender.com (Mất 2 -> 3 phút để đánh thức server)
+- Web chạy ổn định tại: https://tivishop2.onrender.com (Mất 2 -> 3 phút để đánh thức server)
 
