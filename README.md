@@ -1,4 +1,4 @@
-# 🖥️ ỨNG DỤNG NGÔN NGỮ JAVA XÂY DỰNG WEBSITE BÁN TIVI THEO MÔ HÌNH MVC
+# 🖥️ Ứng dung ngôn ngữ Java xây dựng website bán tivi theo mô hình MVC
 
 ## 🎯 Giới thiệu
 Đề tài xây dựng **website bán tivi trực tuyến** bằng ngôn ngữ **Java**, áp dụng mô hình **MVC (Model – View – Controller)** nhằm tổ chức mã nguồn rõ ràng, tách biệt giữa giao diện, xử lý và dữ liệu.
