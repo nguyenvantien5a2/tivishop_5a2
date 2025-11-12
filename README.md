@@ -1,6 +1,6 @@
 # 🖥️ Ứng dung ngôn ngữ Java xây dựng website bán tivi theo mô hình MVC
 
-## 🎯 Giới thiệu
+## Giới thiệu
 Đề tài xây dựng **website bán tivi trực tuyến** bằng ngôn ngữ **Java**, áp dụng mô hình **MVC (Model – View – Controller)** nhằm tổ chức mã nguồn rõ ràng, tách biệt giữa giao diện, xử lý và dữ liệu.
 
 Mục tiêu chính:
@@ -11,18 +11,18 @@ Mục tiêu chính:
 
 ---
 
-## ⚙️ Kiến trúc hệ thống (MVC)
+## Kiến trúc hệ thống (MVC)
 
-### 🧩 Model
+### Model
 - Các lớp Java (Entity, DAO) quản lý dữ liệu và kết nối với cơ sở dữ liệu PostgreSQL qua JDBC.  
 - Xử lý các thao tác CRUD cho sản phẩm, người dùng, đơn hàng, đánh giá,...
 
-### 🖥️ View
+### View
 - Giao diện động sử dụng **JSP**, **HTML**, **CSS**, **Bootstrap**, **Font Awesome**, **JavaScript**.  
 - Hiển thị sản phẩm, biểu mẫu đăng nhập, đăng ký, giỏ hàng, đơn hàng, dashboard, v.v.  
 - Gửi request về Controller thông qua form hoặc link.
 
-### 🧠 Controller
+### Controller
 - Các lớp **Servlet** xử lý request, gọi Model, nhận dữ liệu và trả về View tương ứng.  
 - Quản lý session người dùng, xác thực đăng nhập và phân quyền theo vai trò.
 
@@ -79,7 +79,7 @@ Mục tiêu chính:
 - Tạo database `tivishop` trong PostgreSQL:
   ```sql
   CREATE DATABASE tivishop;
-  
+
 ### 3. Build & Run trên máy local
 
 ### 4. Đóng gói và triển khai Docker
