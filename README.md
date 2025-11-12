@@ -87,7 +87,15 @@ FROM tomcat:10.1
 COPY target/TiviShop.war /usr/local/tomcat/webapps/
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
+```
 
-### 5.
-
+### 5. Triển khai lên Render
+- Tạo PostgreSQL trên Render
+- Tạo Web Service trên Render, cấu hình biến môi trường (URL, USER, PASS)
+- Triển khai kết nối vs PostgreSQL trên Render thông qua pgAdmin: 
+    - tạo Servers (nhập host, port, database, username, pass…)
+    - tạo query tool (chạy câu lệnh sql)
+- Triển khai thành công web lên Render.
+Web chạy ổn định tại: 
+https://tivishop2.onrender.com 
 
