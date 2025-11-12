@@ -73,12 +73,14 @@ Mục tiêu chính:
 ### 1. Chuẩn bị môi trường
 - Cài đặt **JDK (Java Development Kit)**, **Apache Tomcat**, **PostgreSQL** và **pgAdmin**.  
 - Cài **Maven** để build dự án.  
-- Có tài khoản **Render.com** để deploy web và database.
+- Tạo tài khoản **Render.com** để deploy web và database.
 
 ### 2. Cấu hình cơ sở dữ liệu
 - Tạo database `tivishop` trong PostgreSQL:
   ```sql
   CREATE DATABASE tivishop;
+  
+### 3. Build & Run trên máy local
 
 ### 4. Đóng gói và triển khai Docker
 - Tạo file Dockerfile trong thư mục gốc dự án:
@@ -91,11 +93,10 @@ CMD ["catalina.sh", "run"]
 
 ### 5. Triển khai lên Render
 - Tạo PostgreSQL trên Render
-- Tạo Web Service trên Render, cấu hình biến môi trường (URL, USER, PASS)
+- Tạo Web Service trên Render, cấu hình biến môi trường (DB_URL, DB_USER, DB_PASS)
 - Triển khai kết nối vs PostgreSQL trên Render thông qua pgAdmin: 
-    - tạo Servers (nhập host, port, database, username, pass…)
+    - tạo Servers (nhập hostname, port, database, username, pass…)
     - tạo query tool (chạy câu lệnh sql)
 - Triển khai thành công web lên Render.
-Web chạy ổn định tại: 
-https://tivishop2.onrender.com 
+Web chạy ổn định tại: https://tivishop2.onrender.com (Mất 2 -> 3 phút để đánh thức server)
 
