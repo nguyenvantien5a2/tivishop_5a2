@@ -81,6 +81,9 @@ Mục tiêu chính:
   CREATE DATABASE tivishop;
 
 ### 3. Build & Run trên máy local
+- Triển khai trên localhost 
+
+http://localhost:8080/TiviShop/
 
 ### 4. Đóng gói và triển khai Docker
 - Tạo file Dockerfile trong thư mục gốc dự án:
@@ -104,5 +107,5 @@ CMD ["catalina.sh", "run"]
     - tạo Servers (nhập hostname, port, database, username, pass…)
     - tạo query tool (chạy câu lệnh sql)
 - Triển khai thành công web lên Render.
-- Web chạy ổn định tại: https://tivishop2.onrender.com (Mất 2 -> 3 phút để đánh thức server)
+- Website chạy ổn định tại: [https://tivishop2.onrender.com](https://tivishop2.onrender.com) (Mất 2 -> 3 phút để đánh thức server)
 
