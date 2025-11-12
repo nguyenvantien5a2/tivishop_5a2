@@ -107,5 +107,5 @@ CMD ["catalina.sh", "run"]
     - tạo Servers (nhập hostname, port, database, username, pass…)
     - tạo query tool (chạy câu lệnh sql)
 - Triển khai thành công web lên Render.
-- Website chạy ổn định tại: [https://tivishop2.onrender.com](https://tivishop2.onrender.com) (Mất 2 -> 3 phút để đánh thức server)
+- Website chạy ổn định tại: [https://tivishop2.onrender.com](https://tivishop2.onrender.com) (mất 2 - 3 phút để đánh thức render server)
 
