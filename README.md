@@ -81,9 +81,6 @@ Mục tiêu chính:
   CREATE DATABASE tivishop;
 
 ### 3. Build & Run trên máy local
-- Triển khai trên localhost 
-
-http://localhost:8080/TiviShop/
 
 ### 4. Đóng gói và triển khai Docker
 - Tạo file Dockerfile trong thư mục gốc dự án:
