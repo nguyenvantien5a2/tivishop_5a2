@@ -64,7 +64,7 @@
                 <td>${order.billingName}</td>
                 <td><fmt:formatNumber value="${order.totalAmount}" pattern="#,##0" /> VND</td>
                 <td><span class="status-${order.status.toLowerCase()}">${order.status}</span></td>
-                <td><fmt:formatDate value="${order.createdDate}" pattern="dd/MM/yyyy HH:mm"/></td>
+                <td><fmt:formatDate value="${order.createdDate}" pattern="dd/MM/yyyy HH:mm" timeZone="GMT+7"/></td>
                 <td class="action-buttons">
                     <form action="orderss" method="post" class="d-inline">
                         <input type="hidden" name="action" value="updateStatus">
