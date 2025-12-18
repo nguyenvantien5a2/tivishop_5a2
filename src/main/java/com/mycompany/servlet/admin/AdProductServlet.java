@@ -72,10 +72,23 @@ public class AdProductServlet extends HttpServlet {
             }
             product.setName(req.getParameter("name"));
             try {
-                product.setPrice(Double.parseDouble(req.getParameter("price")));
-                product.setOriginalPrice(Double.parseDouble(req.getParameter("originalPrice")));
+                double originalPrice = Double.parseDouble(req.getParameter("originalPrice"));
+                int discountPercentage = Integer.parseInt(req.getParameter("discountPercentage"));
+
+                // Validate
+                if (discountPercentage < 0 || discountPercentage > 100) {
+                    throw new NumberFormatException("Phần trăm giảm giá phải từ 0-100!");
+                }
+                if (originalPrice <= 0) {
+                    throw new NumberFormatException("Giá gốc phải lớn hơn 0!");
+                }
+                
+                // Tính giá sau giảm (price)
+                double price = originalPrice * (1 - discountPercentage / 100.0);
+                product.setOriginalPrice(originalPrice);
+                product.setPrice(price);
             } catch (NumberFormatException e) {
-                req.setAttribute("error", "Giá sản phẩm hoặc giá gốc không hợp lệ!");
+                req.setAttribute("error", "Dữ liệu giá gốc hoặc phần trăm giảm giá không hợp lệ: " + e.getMessage());
                 req.setAttribute("products", dao.getAllProducts());
                 req.getRequestDispatcher("/admin/manage-products.jsp").forward(req, resp);
                 return;
