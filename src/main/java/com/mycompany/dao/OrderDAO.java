@@ -12,17 +12,9 @@ import java.util.Date;
 import java.util.List;
 
 public class OrderDAO {
-    // LẤY TỪ RENDER ENVIRONMENT VARIABLES
-    private static final String URL = System.getenv("DB_URL");
-    private static final String USER = System.getenv("DB_USER");
-    private static final String PASS = System.getenv("DB_PASS");
-
-    // Kiểm tra nếu chưa set (tránh lỗi local)
-    static {
-        if (URL == null || USER == null || PASS == null) {
-            throw new RuntimeException("Database environment variables (DB_URL, DB_USER, DB_PASS) are not set!");
-        }
-    }
+    private static final String URL = "jdbc:postgresql://localhost:5433/TiviShopDB";
+    private static final String USER = "postgres";
+    private static final String PASS = "123456";
 
     // Tạo đơn hàng mới và trả về ID
     public int createOrder(Order order) {
@@ -449,5 +441,38 @@ public class OrderDAO {
             e.printStackTrace();
         }
         return order;
+    }
+    
+    //Kiểm tra user có quyền đánh giá sản phẩm không (đơn hàng DELIVERED)
+    public boolean canUserReviewProduct(int userId, int productId) {
+        String sql = """
+            SELECT COUNT(*) 
+            FROM "Order" o 
+            JOIN "OrderDetail" od ON o.id = od.order_id 
+            WHERE o.user_id = ? 
+              AND od.product_id = ? 
+              AND o.status = 'DELIVERED'
+            """;
+        Connection conn = null;
+        try {
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection(URL, USER, PASS);
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setInt(1, userId);
+                ps.setInt(2, productId);
+                try (ResultSet rs = ps.executeQuery()) {
+                    if (rs.next()) {
+                        return rs.getInt(1) > 0;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (conn != null) {
+                try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+            }
+        }
+        return false;
     }
 }

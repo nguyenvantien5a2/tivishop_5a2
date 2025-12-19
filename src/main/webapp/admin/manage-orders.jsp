@@ -9,14 +9,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="../css/admin-style.css" rel="stylesheet">
     <style>
-        .status-pending {color:#fff;font-weight:bold;background-color:#6495ED;padding:4px 21px;border-radius:4px;}
-        .status-confirmed {color:#fff;font-weight:bold;background-color:#ff9800;padding:4px 8px;border-radius:4px;}
-        .status-cancelled {color:#fff;font-weight:bold;background-color:red;padding:4px 8px;border-radius:4px;}
+        .status-pending {color:#fff;font-weight:bold;background-color:#6495ED;padding:4px 21px;border-radius:4px;} /* Xanh dương nhạt */
+        .status-confirmed {color:#fff;font-weight:bold;background-color:#ff9800;padding:4px 12px;border-radius:4px;} /* Cam */
+        .status-processing {color:#fff;font-weight:bold;background-color:#9c27b0;padding:4px 12px;border-radius:4px;} /* Tím */
+        .status-shipping {color:#fff;font-weight:bold;background-color:#3f51b5;padding:4px 12px;border-radius:4px;} /* Indigo */
+        .status-shipped {color:#fff;font-weight:bold;background-color:#2196f3;padding:4px 12px;border-radius:4px;} /* Xanh dương */
+        .status-delivered {color:#fff;font-weight:bold;background-color:#4caf50;padding:4px 12px;border-radius:4px;} /* Xanh lá */
+        .status-cancelled {color:#fff;font-weight:bold;background-color:#f44336;padding:4px 12px;border-radius:4px;} /* Đỏ */
         .order-details-table th,.order-details-table td{text-align:center;vertical-align:middle;}
         .product-image{width:auto;height:50px;object-fit:cover;}
         .action-buttons{display:flex;gap:10px;align-items:center;padding-right:10px;}
         .action-buttons form{margin-bottom:0;}
-        .action-buttons .form-select{width:120px;}
+        .action-buttons .form-select{width:146px;}
         .action-buttons .btn{padding:6px 12px;min-width:90px;}
         .table th,.table td{text-align:center;padding-right:40px;}
         .alert-container{position:relative;z-index:1000;margin-bottom:15px;}
@@ -64,15 +68,19 @@
                 <td>${order.billingName}</td>
                 <td><fmt:formatNumber value="${order.totalAmount}" pattern="#,##0" /> VND</td>
                 <td><span class="status-${order.status.toLowerCase()}">${order.status}</span></td>
-                <td><fmt:formatDate value="${order.createdDate}" pattern="dd/MM/yyyy HH:mm" timeZone="GMT+7"/></td>
+                <td><fmt:formatDate value="${order.createdDate}" pattern="dd/MM/yyyy HH:mm"/></td>
                 <td class="action-buttons">
                     <form action="orderss" method="post" class="d-inline">
                         <input type="hidden" name="action" value="updateStatus">
                         <input type="hidden" name="orderId" value="${order.id}">
                         <select name="status" class="form-select d-inline">
-                            <option value="PENDING" ${order.status == 'PENDING' ? 'selected' : ''}">PENDING</option>
-                            <option value="CONFIRMED" ${order.status == 'CONFIRMED' ? 'selected' : ''}">CONFIRMED</option>
-                            <option value="CANCELLED" ${order.status == 'CANCELLED' ? 'selected' : ''}">CANCELLED</option>
+                            <option value="PENDING" ${order.status == 'PENDING' ? 'selected' : ''}>PENDING</option>
+                            <option value="CONFIRMED" ${order.status == 'CONFIRMED' ? 'selected' : ''}>CONFIRMED</option>
+                            <option value="PROCESSING" ${order.status == 'PROCESSING' ? 'selected' : ''}>PROCESSING</option>
+                            <option value="SHIPPING" ${order.status == 'SHIPPING' ? 'selected' : ''}>SHIPPING</option>
+                            <option value="SHIPPED" ${order.status == 'SHIPPED' ? 'selected' : ''}>SHIPPED</option>
+                            <option value="DELIVERED" ${order.status == 'DELIVERED' ? 'selected' : ''}>DELIVERED</option>
+                            <option value="CANCELLED" ${order.status == 'CANCELLED' ? 'selected' : ''}>CANCELLED</option>
                         </select>
                         <button type="submit" class="btn btn-sm btn-primary">
                             <i class="fas fa-sync"></i> Chỉnh
@@ -112,7 +120,7 @@
                             <p><strong>Địa chỉ:</strong> ${viewOrder.address}</p>
                             <p><strong>Số điện thoại:</strong> ${viewOrder.billingPhone}</p>
                             <p><strong>Ngày tạo:</strong>
-                               <fmt:formatDate value="${viewOrder.createdDate}" pattern="dd/MM/yyyy HH:mm"/>
+                               <fmt:formatDate value="${viewOrder.createdDate}" pattern="dd/MM/yyyy HH:mm" timeZone="GMT+7"/>
                             </p>
                             
                             <c:if test="${viewOrder.payment != null}">

@@ -84,9 +84,13 @@
             margin: 5px 0; 
         }
         .table th, .table td { text-align: center; }
-        .status-pending {color:#fff;font-weight:bold;background-color:#6495ED;padding:4px 21px;border-radius:4px;}
-        .status-confirmed {color:#fff;font-weight:bold;background-color:#ff9800;padding:4px 8px;border-radius:4px;}
-        .status-cancelled {color:#fff;font-weight:bold;background-color:red;padding:4px 8px;border-radius:4px;}
+        .status-pending {color:#fff;font-weight:bold;background-color:#6495ED;padding:4px 21px;border-radius:4px;} /* Xanh dương nhạt */
+        .status-confirmed {color:#fff;font-weight:bold;background-color:#ff9800;padding:4px 12px;border-radius:4px;} /* Cam */
+        .status-processing {color:#fff;font-weight:bold;background-color:#9c27b0;padding:4px 12px;border-radius:4px;} /* Tím */
+        .status-shipping {color:#fff;font-weight:bold;background-color:#3f51b5;padding:4px 12px;border-radius:4px;} /* Indigo */
+        .status-shipped {color:#fff;font-weight:bold;background-color:#2196f3;padding:4px 12px;border-radius:4px;} /* Xanh dương */
+        .status-delivered {color:#fff;font-weight:bold;background-color:#4caf50;padding:4px 12px;border-radius:4px;} /* Xanh lá */
+        .status-cancelled {color:#fff;font-weight:bold;background-color:#f44336;padding:4px 12px;border-radius:4px;} /* Đỏ */
     </style>
 </head>
 <body>
@@ -140,7 +144,7 @@
                                                         <thead>
                                                             <tr>
                                                                 <th>Ảnh</th>
-                                                                <th>Sản phẩm</th>
+                                                                <th>Tên sản phẩm</th>
                                                                 <th>Số lượng</th>
                                                                 <th>Đơn giá</th>
                                                                 <th>Thành tiền</th>

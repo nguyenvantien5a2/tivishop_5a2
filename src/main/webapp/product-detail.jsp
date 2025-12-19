@@ -709,31 +709,22 @@
                             <span class="quantity-badge">Còn ${product.quantity} sản phẩm</span>
                         </div>
 
-<!--                         Add to Cart 
-                        <form action="cart" method="post">
-                            <input type="hidden" name="action" value="add">
-                            <input type="hidden" name="productId" value="${product.id}">
-                            <button type="submit" class="btn-add-cart">
-                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ hàng
-                            </button>
-                        </form>-->
-
-<c:choose>
-    <c:when test="${product.quantity > 0}">
-        <form action="cart" method="post">
-            <input type="hidden" name="action" value="add">
-            <input type="hidden" name="productId" value="${product.id}">
-            <button type="submit" class="btn btn-add-cart">
-                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ hàng
-            </button>
-        </form>
-    </c:when>
-    <c:otherwise>
-        <button class="btn btn-out-of-stock disabled" disabled>
-            <i class="fas fa-ban me-2"></i>Hết Sản Phẩm
-        </button>
-    </c:otherwise>
-</c:choose>
+                        <c:choose>
+                            <c:when test="${product.quantity > 0}">
+                                <form action="cart" method="post">
+                                    <input type="hidden" name="action" value="add">
+                                    <input type="hidden" name="productId" value="${product.id}">
+                                    <button type="submit" class="btn btn-add-cart">
+                                        <i class="fas fa-shopping-cart"></i> Thêm vào giỏ hàng
+                                    </button>
+                                </form>
+                            </c:when>
+                            <c:otherwise>
+                                <button class="btn btn-out-of-stock disabled" disabled>
+                                    <i class="fas fa-ban me-2"></i>Hết Sản Phẩm
+                                </button>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
             </div>
@@ -781,18 +772,26 @@
             </c:if>
             
             <!-- Review Form -->
-            <c:if test="${not empty sessionScope.user}">
-                <div class="review-form">
-                    <h4 class="form-title">
-                        <i class="fas fa-edit"></i> Thêm đánh giá của bạn
+            <!-- Hiển thị thông báo lỗi nếu có -->
+            <c:if test="${not empty requestScope.error}">
+                <div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+                    ${requestScope.error}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            </c:if>
+
+            <!-- Form đánh giá - chỉ hiển thị nếu đủ quyền -->
+            <c:if test="${sessionScope.user != null && canReview}">
+                <div class="review-form mt-5 p-4 border rounded bg-light">
+                    <h4 class="mb-4">
+                        <i class="fas fa-edit text-primary"></i> Viết đánh giá của bạn
                     </h4>
                     <form action="product-detail" method="post">
                         <input type="hidden" name="productId" value="${product.id}">
-                        <input type="hidden" name="userId" value="${sessionScope.user.id}">
-                        
+
                         <div class="mb-3">
-                            <label class="form-label">Đánh giá:</label>
-                            <select name="rating" class="form-select">
+                            <label class="form-label fw-bold">Đánh giá của bạn:</label>
+                            <select name="rating" class="form-select" required>
                                 <option value="5">⭐⭐⭐⭐⭐ Xuất sắc</option>
                                 <option value="4">⭐⭐⭐⭐ Rất tốt</option>
                                 <option value="3">⭐⭐⭐ Tốt</option>
@@ -800,17 +799,25 @@
                                 <option value="1">⭐ Kém</option>
                             </select>
                         </div>
-                        
+
                         <div class="mb-3">
-                            <label class="form-label">Nhận xét:</label>
-                            <textarea name="comment" class="form-control" rows="4" 
-                                      placeholder="Chia sẻ trải nghiệm của bạn về sản phẩm này..."></textarea>
+                            <label class="form-label fw-bold">Nhận xét:</label>
+                            <textarea name="comment" class="form-control" rows="5" 
+                                      placeholder="Chia sẻ trải nghiệm của bạn về sản phẩm..." required></textarea>
                         </div>
-                        
-                        <button type="submit" class="btn-submit-review">
+
+                        <button type="submit" class="btn btn-success btn-lg">
                             <i class="fas fa-paper-plane"></i> Gửi đánh giá
                         </button>
                     </form>
+                </div>
+            </c:if>
+
+            <!-- Nếu không đủ quyền nhưng đã đăng nhập -->
+            <c:if test="${sessionScope.user != null && !canReview}">
+                <div class="alert alert-info mt-4">
+                    <i class="fas fa-info-circle"></i>
+                    Bạn chỉ có thể đánh giá sản phẩm sau khi nhận hàng thành công (trạng thái <strong>DELIVERED</strong>).
                 </div>
             </c:if>
         </div>
