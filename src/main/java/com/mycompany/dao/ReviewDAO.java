@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReviewDAO {
-    private static final String URL = "jdbc:postgresql://localhost:5433/TiviShopDB";
-    private static final String USER = "postgres";
-    private static final String PASS = "123456";
+    private static final String URL = System.getenv("DB_URL");
+    private static final String USER = System.getenv("DB_USER");
+    private static final String PASS = System.getenv("DB_PASS");
 
     // Thêm đánh giá mới (đã sửa: kiểm tra trùng trước khi insert)
     public boolean addReview(Review review) {

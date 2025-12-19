@@ -12,9 +12,9 @@ import java.util.Date;
 import java.util.List;
 
 public class OrderDAO {
-    private static final String URL = "jdbc:postgresql://localhost:5433/TiviShopDB";
-    private static final String USER = "postgres";
-    private static final String PASS = "123456";
+    private static final String URL = System.getenv("DB_URL");
+    private static final String USER = System.getenv("DB_USER");
+    private static final String PASS = System.getenv("DB_PASS");
 
     // Tạo đơn hàng mới và trả về ID
     public int createOrder(Order order) {
